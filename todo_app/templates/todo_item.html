@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <style>
+        .container{
+            width: 400px; 
+            min-height: 200px;
+            border: 1px solid black;
+            background-color: rgb(219, 234, 234);
+            padding: 10px;
+
+        }
+        a{
+            text-decoration: none;
+        }
+        ul {
+            list-style-type: none; /* Hide default bullets */
+            padding-left: 20px; /* Add some left padding to make space for custom bullets */
+        }
+        
+       
+        li{
+            background-color: rgb(41, 41, 118);
+            color: rgb(232, 207, 207); 
+            padding: 8px; 
+            margin-bottom: 10px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <center> 
+    <a href="{% url 'todo_list' %}">All My list</a>
+    <h1>Django To-Do Lists</h1>
+    <br>
+    <br>
+    <h3><u><b>{{list.list_title}}</b></u></h3>
+    <br>
+    <br>
+    <div class="container">
+        <ul>
+            {% for todo in item %}
+             <a href="{% url 'deletetodo' id=todo.id %}">
+                <li>
+                    {{ todo.title }} ({{ todo.due_date|date:"l, j F" }})
+                </li>
+            </a>
+            {% empty %}
+                <li>There are no to-do items in this list.</li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <br>
+   
+    
+    <button ><a href="{% url 'addform' list.id %}">Add a new item</a></button>
+    <br>
+    <br>
+    <button ><a href="{% url 'deletelist' list.id %}">Delete this list</a></button>
+</center>
+
+</body>
+</html>

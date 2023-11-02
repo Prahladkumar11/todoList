@@ -1,0 +1,14 @@
+body {
+    background-color:var(--bs-success);
+}
+
+.container{
+
+    margin-top: 40px;
+    width: 800px;
+    height: auto;
+    border-radius: 20px;
+}
+.home{
+    align-items: end;
+}
